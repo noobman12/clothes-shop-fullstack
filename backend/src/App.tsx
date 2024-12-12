@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import DefaultLayouts from "./layouts/DefaultLayouts";
+import { routesPage } from "./routes";
+
+import { HelmetProvider } from "react-helmet-async";
+
+const queryClient = new QueryClient();
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<DefaultLayouts />}>
+                {routesPage.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={route.element}
+                    index={route.exact ? true : undefined}
+                  />
+                ))}
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </HelmetProvider>
+      </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
