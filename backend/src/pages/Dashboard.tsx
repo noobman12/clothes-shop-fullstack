@@ -5,7 +5,7 @@ import RecentOrderComponent from "@/components/RecentOrderComponent";
 const Dashboard = () => {
   return (
     <>
-      <main className="mx-auto w-[80vw]">
+      <main className="mx-auto w-[80vw] ml-[230px]">
         <div className="welcome">
           <span className="font-semibold text-xl">Welcom ,Jack</span>
           <br />

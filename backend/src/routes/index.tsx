@@ -1,151 +1,98 @@
 import Dashboard from "../pages/Dashboard";
 import StaffsPage from "../pages/StaffsPage";
-
+import { LuHouse, LuTruck } from "react-icons/lu";
+import { FaInbox } from "react-icons/fa";
+import { PiSuitcase } from "react-icons/pi";
+import { MdCreditCard } from "react-icons/md";
+import { SlGraph } from "react-icons/sl";
+import { RiUserSettingsLine } from "react-icons/ri";
+import { CiSettings } from "react-icons/ci";
+import { IoIosLogOut } from "react-icons/io";
 const routesPage = [
   { path: "/", element: <Dashboard />, exact: true },
-
   { path: "/staffs", element: <StaffsPage /> },
+  {
+    path: "/products",
+    element: <div>Products</div>,
+    subPath: [
+      {
+        path: "/products/add",
+        element: <div>Add Product</div>,
+      },
+      {
+        path: "/products/category",
+        element: <div>Add category</div>,
+      },
+      {
+        path: "/products/brand",
+        element: <div>Add brand</div>,
+      },
+    ],
+  },
+  { path: "/orders", element: <div>Orders</div> },
+  { path: "/payments", element: <div>Payments</div> },
+  { path: "/statistics", element: <div>Statistics</div> },
+  { path: "/shippings", element: <div>Shippings</div> },
+  { path: "/customers", element: <div>Customers</div> },
+  { path: "/setting", element: <div>Setting</div> },
+  { path: "/logout", element: <div>Logout</div> },
 ];
 
 const menuItems = [
   {
     title: "Dashboard",
     link: "/",
-    svg: (
-      <svg
-        className="w-5 h-5"
-        aria-hidden="true"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-      </svg>
-    ),
+    image: <LuHouse />,
   },
   {
-    title: "Sản phẩm",
-    link: "/product",
-    svg: (
-      <svg
-        className="w-5 h-5"
-        aria-hidden="true"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"></path>
-        <path d="M2 12h20M12 2c2.5 2 5 6 5 10s-2.5 8-5 10c-2.5-2-5-6-5-10s2.5-8 5-10z"></path>
-      </svg>
-    ),
+    title: "Product",
+    link: "/products",
+    image: <FaInbox className="text-lg" />,
     submenu: [
-      { title: "Tất cả sản phẩm", link: "/product" },
-      { title: "Thêm mới", link: "/product/add" },
-      { title: "Danh mục", link: "/category" },
-      { title: "Thương hiệu", link: "/brand" },
+      { title: "All Product", link: "/products" },
+      { title: "Add Product", link: "/products/add" },
+      { title: "Category", link: "/products/category" },
+      { title: "Brand", link: "/products/brand" },
     ],
   },
   {
-    title: "Đơn hàng",
+    title: "Order",
     link: "/orders",
-    svg: (
-      <svg
-        className="w-6 h-6"
-        aria-hidden="true"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <rect
-          x="4"
-          y="2"
-          width="16"
-          height="20"
-          rx="2"
-          ry="2"
-          stroke="currentColor"
-        />
-        <path d="M8 6h8" stroke="currentColor" />
-        <path d="M8 10h8" stroke="currentColor" />
-        <path d="M8 14h5" stroke="currentColor" />
-        <path d="M12 18h4" stroke="currentColor" />
-      </svg>
-    ),
+    image: <PiSuitcase className="text-xl" />,
   },
   {
-    title: "Khách hàng",
+    title: "Payment",
+    link: "/payments",
+    image: <MdCreditCard className="text-white text-xl" />,
+  },
+  {
+    title: "Statistics",
+    link: "/statistics",
+    image: <SlGraph className="text-lg" />,
+  },
+  {
+    title: "Shipping",
+    link: "/shippings",
+    image: <LuTruck className="text-lg" />,
+  },
+  {
+    title: "Customer",
     link: "/customers",
-    svg: (
-      <svg
-        className="w-6 h-6"
-        aria-hidden="true"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path d="M12 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
-        <path d="M16 16c0-2.21-1.79-4-4-4s-4 1.79-4 4" />
-        <path d="M6 10c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
-        <path d="M9 14c0-1.66-1.34-3-3-3S3 12.34 3 14" />
-        <path d="M18 10c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
-        <path d="M21 14c0-1.66-1.34-3-3-3s-3 1.34-3 3" />
-      </svg>
-    ),
   },
   {
-    title: "Bài viết",
-    link: "/post",
-    svg: (
-      <svg
-        className="w-5 h-5"
-        aria-hidden="true"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path d="M2 12l10 10L22 12V4H12L2 12z"></path>
-        <circle cx="12" cy="8" r="1.5"></circle>
-      </svg>
-    ),
-    submenu: [
-      { title: "Tất cả bài viết", link: "/post" },
-      { title: "Thêm mới", link: "/post/add" },
-      { title: "Danh mục bài viết", link: "/topic" },
-    ],
-  },
-  {
-    title: "Thành viên",
+    title: "Mange User",
     link: "/staffs",
-    svg: (
-      <svg
-        className="w-5 h-5"
-        aria-hidden="true"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path d="M12 14c4.418 0 8 3.582 8 8H4c0-4.418 3.582-8 8-8z" />
-        <path d="M12 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
-      </svg>
-    ),
+    image: <RiUserSettingsLine className="text-lg" />,
+  },
+  {
+    title: "Setting",
+    link: "/setting",
+    image: <CiSettings className="text-lg" />,
+  },
+  {
+    title: "Log out",
+    link: "/logout",
+    image: <IoIosLogOut className="text-lg" />,
   },
 ];
 
